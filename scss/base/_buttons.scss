@@ -1,0 +1,63 @@
+.btn {
+   font-family: $font-primary;
+   font-size: $font-size;
+   padding: ( $font-size + 0.15rem ) ( $font-size + .9rem);
+   border: none;
+   border-radius: 50px;
+   cursor: pointer;
+   display: inline-block;
+   font-weight: 600;
+   line-height: 1;
+   outline: none;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   width: 100%;
+   @include mq-min(md) {
+      width: auto;
+   }
+   &:hover,
+   &:focus{
+      outline: none;
+   }
+   &:hover{
+      font-weight: 600;
+   }
+   &--primary {
+      border: .13rem solid color( secondary, 500 );
+      @include button( color( secondary, 500 ),color( grayscale, white ) );
+      &:hover,
+      &.active{
+         background: color(secondary,800);
+         border: .13rem solid color( secondary, 800 );
+         &:before{
+            border-color: color( secondary, 800 );
+         }
+      }
+      &.outline {
+         @include button( transparent, color( secondary, 500 ) );
+         border: .13rem solid color( secondary, 500 );
+         &:hover,
+         &:active {
+            text-decoration: underline;
+         }
+         &.active{
+            border: .13rem solid color( secondary, 500 );
+         }
+      }
+   }
+   &--secondary {
+      @include button( color( tertiary, 500 ), color( grayscale, white ) );
+      &.outline {
+         @include button( color( grayscale, white ), color( tertiary, 500 ) );
+         border: .15rem solid color( tertiary, 500);
+         &:hover, &:active {
+            opacity: 0.8;
+         }
+      }
+      &.btn--whatsapp{
+        background: #0bc144;
+        &:before{
+          border-color:#0bc144;
+        }
+      }
+   }
+}
