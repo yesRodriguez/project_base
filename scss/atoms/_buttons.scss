@@ -1,0 +1,36 @@
+button,
+input[type="submit"],
+input[type="button"]{
+    @extend %button;
+    &.btn{
+        &--secondary {
+            @include button( color(secondary, 500) );
+        }
+        &--complementary {
+            @include button( color(complementary, 700) );
+        }
+        &--ghost {     
+            @include button ( transparent, color(grayscale,white), color(secondary, 500), 0.1rem);
+        }
+        &--outline {
+            @include button( color(grayscale,white), color(primary, 500), color(primary, 500), 0.1rem);
+            &-secondary {
+                @include button( color(grayscale,white), color(secondary, 500), color(secondary, 500), 0.1rem );
+            }
+            &-complementary {
+                @include button( color(grayscale,white), color(complementary, 700), color(complementary, 700), 0.1rem );
+            }
+        }
+        &__tab{
+            @include button( color(primary, 500), color(grayscale, white), transparent, 0, 0 );
+            margin: 0rem;
+            outline: none;
+            padding: 14px 16px;
+            transition: 0.3s;
+            &.active {
+                background-color: color(primary, 900);
+                border: none;
+            }
+        }
+    }
+}

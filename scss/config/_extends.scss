@@ -1,56 +1,41 @@
+%button{
+    @include button(color(primary,500));
+    cursor:pointer;
+    font-family: $font-primary;
+    font-size: $font-size;
+    margin: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    text-align: center;
+}
+
+%link{
+    @include link (color(primary,500),color(complementary,300));
+    cursor:pointer;
+    font-size: $font-size;
+    outline: 0;
+    text-decoration: none;
+    transition: color .1s ease-out;
+    &:focus{
+      outline: dotted;
+    }
+}
+
+%input{
+  cursor: pointer;
+  font-family: $font-primary;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  &:disabled {
+    box-shadow: none;
+    opacity: 0.55;
+    cursor: auto;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
 
 %titles{
-    font-family: $font-secondary;
-    font-weight: 900;
-    font-size: 4rem;
-    line-height: 4.5rem;
-    strong{
-        font-size: 4.5rem;
-    }
-}
-%subtitle{
-    font-family: $font-secondary;
-    font-weight: bold;
-    font-size: 2.2rem;
-    line-height: auto;
-    strong{
-        color:color(primary,600);
-    }
-}
-%title-cards{
-    font-family: $font-secondary;
-    font-weight: bold;
-    font-size: 1.8rem;
-    line-height: 2rem;
-    strong{
-        color:color(primary,600);
-    }
-}
-@include mq-min(md){
-    %titles{
-        font-size: 4rem;
-        line-height: 4.5rem;
-        strong{
-            font-size: 6rem;
-        }
-    }
-    %subtitle{
-        font-size: 3rem;
-    }
-}
-@include mq-min(xl){
-    %titles{
-        font-size: 6rem;
-        line-height: 6.5rem;
-        strong{
-            font-size: 8rem;
-        }
-    }
-    %subtitle{
-        font-size: 3.2rem;
-    }
-    %title-cards{
-        font-size: 2rem;
-        line-height: 2.5rem;
-    }
+  color: color(primary,500);
+  font-family: $font-primary;
 }

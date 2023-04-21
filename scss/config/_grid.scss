@@ -1,0 +1,49 @@
+.grid{
+   @include grid(1rem, grid, repeat(12, 1fr));
+   @include mq-max(sm) {
+      grid-gap: 0;
+   }
+   &__item{
+      align-items: center;
+      display: flex;
+      justify-content: center;
+   }
+}
+
+@for $i from 1 through 12 {
+   .grid-#{$i} {
+      grid-column: span ($i);
+   }
+}
+
+@include mq-min(sm) {
+   @for $i from 1 through 12 {
+      .grid-sm-#{$i} {
+         grid-column: span ($i);
+      }
+   }
+}
+
+@include mq-min(md) {
+   @for $i from 1 through 12 {
+      .grid-md-#{$i} {
+         grid-column: span ($i);
+      }
+   }
+}
+
+@include mq-min(lg) {
+   @for $i from 1 through 12 {
+      .grid-lg-#{$i} {
+         grid-column: span ($i);
+      }
+   }
+}
+
+@include mq-min(xl) {
+   @for $i from 1 through 12 {
+      .grid-xl-#{$i} {
+         grid-column: span ($i);
+      }
+   }
+}

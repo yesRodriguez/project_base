@@ -1,0 +1,13 @@
+// Paddings
+@include list-spacing('.pt', 'padding-top');
+@include list-spacing('.pb', 'padding-bottom');
+@include list-spacing('.pr', 'padding-right');
+@include list-spacing('.pl', 'padding-left');
+@include list-spacing('.pd', 'padding');
+
+// Margins
+@include list-spacing('.mt', 'margin-top');
+@include list-spacing('.mb', 'margin-bottom');
+@include list-spacing('.mr', 'margin-right');
+@include list-spacing('.ml', 'margin-left');
+@include list-spacing('.mg', 'margin');

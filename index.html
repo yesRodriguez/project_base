@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/index.js"></script> 
+    <title>Atomic Design Base</title>
+</head>
+
+<body>
+    <main class="container">
+        <div class="d-flex jc-center mb-base">
+            <img src="./image/logo-nivelics.png" width="215" alt="">
+        </div>
+        <h1 class="d-md-flex jc-center mb-base">Atomic Design: Elementos Básicos</h1>
+        <div>
+            <div class="tab">
+                <div class="tab__container d-md-flex">
+                    <button class="btn__tab active" onclick="openTab(event, 'buttons')">Botones</button>
+                    <button class="btn__tab" onclick="openTab(event, 'links')">Links</button>
+                    <button class="btn__tab" onclick="openTab(event, 'nav-menu')">Menú de navegación</button>
+                    <button class="btn__tab" onclick="openTab(event, 'inputs')">Inputs</button>
+                    <button class="btn__tab" onclick="openTab(event, 'tables')">Tablas</button>
+                    <button class="btn__tab" onclick="openTab(event, 'headings')">Titulos y listas</button>
+                    <button class="btn__tab" onclick="openTab(event, 'grilla')">Grilla y Flexbox</button>
+                </div>
+            </div>
+            <!-- Sección de botones -->
+            <div id="buttons" class="tab__content">
+                <h2>Botones sólidos</h2>
+                <div class="mb-base">
+                    <!-- Solidos-->
+                    <p>Por defecto se configuran los elementos desde el mixin de buttons 
+                        <br>
+                        Se configuran los estilos en el atom <code>_buttons.scss</code>
+                        <br>
+                        Para los botones sólidos solo se pasa el color de background al mixin.
+                    </p>
+                    <div class="d-md-flex jc-center mt-base">
+                        <button>Botón Primario</button>
+                        <button class="btn btn--secondary">Botón Secundario</button>
+                        <button class="btn btn--complementary">Botón Complementario</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-base">
+                    <!-- Outline-->
+                    <h2>Botones outline</h2>
+                    <div>
+                        <p>Los botones de estilo Outline se obtienen con la clase <code>btn-outline</code>
+                            <br>
+                            <br>
+                            Para configurar un color diferente para botones Outline se hace uso del mixin BUTTON con los siguientes parametros
+                            <br>
+                            - <code>$bg</code> = color de background. <br>
+                            - <code>$color: #ffffff</code> = color de fuente. <br>
+                            - <code>$border-color: transparent</code> = color de borde. <br>
+                            - <code>$border-width: 0rem</code> = ancho de borde. <br>
+                            - <code>$border-radius: 0.3rem</code> = radio de los bordes del botón <br>
+                        </p>
+                        <p><strong>Mixin</strong></p>
+                        <br>
+                        <code>
+                            .at-btn-outline { <br>
+                                @include button(<br>
+                                    $bg,
+                                    $color: #ffffff, <br>
+                                    $border-color: transparent,
+                                    $border-width: 0rem, <br>
+                                    $border-radius: 0.3rem<br>
+                                )<br>
+                            }<br>
+                        </code>
+                        <div class="d-md-flex jc-center">
+                            <button class="btn btn--outline">Botón outline</button>
+                            <button class="btn btn--outline-secondary">Botón outline secundario</button>
+                            <button class="btn btn--outline-complementary">Botón outline Complementario</button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-base">
+                    <h2>Botones ghost</h2>
+                    <p>Los botones de estilo ghost, es decir con fondo transparente se obtienen con la clase <code>btn__ghost</code>
+                    </p>
+                    <div class="mt-base" style="background-color: #0F3E4D; padding: 1.5rem 1rem; text-align:center; border-radius: 5px;">
+                        <button class="btn btn--ghost">Boton fantasma</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-base">
+                    <!-- Botones deshabilitados -->
+                    <h2>Deshabilitados</h2>
+                    <p>Botones deshabilitados con la clase <code>disable</code>
+                    </p>
+                    <div class="d-md-flex jc-center mt-base">
+                        <button class="btn disabled">Botón normal</button>
+                        <button class="btn btn--secondary disabled">Botón secundario</button>
+                        <button class="btn btn--complementary disabled">Botón complementario</button>
+                        <button class="btn btn--outline disabled">Botón outline</button>
+                        <button class="btn btn--outline-secondary disabled">Botón outline secundario</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de links -->
+            <div id="links" class="tab__content">
+                <h2>Links</h2>
+                <div class="mb-half">
+                    <p>La etiqueta <code>a</code> viene definida por defecto sin ningún tipo de decoración.</p>
+                    <p>Usando la clase <code>link--underline</code> se puede aplicar el clásico subrayado a las etiquetas de link.</p>
+                    <br>
+                    <a href="#">Este es un link básico</a> <br>
+                    <a href="#" class="link link--secondary">Este es un link básico secundario</a> <br>
+                    <a href="#" class="link link--underline">Este es un link subrayado</a><br>
+                    <a href="#" class="link link--underline-secondary">Este es un link subrayado secundario</a>
+                </div>
+                <hr>
+                <div class="mt-half">
+                    <h2>Links tipo botón</h2>
+                    <a href="#" class="btn">Link tipo botón</a>
+                    <a href="#" class="btn btn--secondary">Link tipo botón secundario</a>
+                    <a href="#" class="btn btn--complementary">Link tipo botón complementario</a>
+                </div>
+            </div>
+
+            <!-- Sección menú de navegación -->
+            <div id="nav-menu" class="tab__content">
+                <h2>Menú horizontal</h2>
+                <p>
+                    Dependiendo de la orientación del menú se utilizan las clases  <code>nav__list--column </code> o <code>nav__list--row</code>. <br>
+                </p>
+                <br>
+                <nav class="nav__list nav__list--row">
+                    <a href="#">Menu1</a>
+                    <a href="#">Menu2</a>
+                    <a href="#">Menu3</a>
+                    <a href="#">Menu4</a>
+                    <a href="#">Menu5</a>
+                    <a href="#">Menu6</a>
+                    <a href="#">Menu7</a>
+                </nav>
+                <br> <br>
+                <p>
+                    Algunos iconos. 
+                </p>
+                <br>
+                <nav class="nav__list nav__list--row">
+                    <a href="#"><i class="icon-twitter" aria-hidden="true"></i> Twitter </a>
+                    <a href="#"><i class="icon-instagram" aria-hidden="true"></i>Instagram</a>
+                    <a href="#"><i class="icon-facebook" aria-hidden="true"></i> Facebook </a>
+                </nav>
+                <br>
+                <hr>
+                <div>
+                    <h2>Menú Vertical</h2>
+                    <p>
+                        Se pueden agregar estilos de link
+                    </p>
+                    <br>
+                    <nav class="nav__list nav__list--column">
+                        <a href="#">Menu1</a>
+                        <a href="#">Menu2</a>
+                        <a href="#">Menu3</a>
+                    </nav>
+                    <br>
+                    <hr>
+                    <br>
+                    <nav class="nav__list nav__list--column">
+                        <a href="#"><i class="icon-twitter" aria-hidden="true"></i> Twitter </a>
+                        <a href="#"><i class="icon-instagram" aria-hidden="true"></i>Instagram</a>
+                        <a href="#"><i class="icon-facebook" aria-hidden="true"></i> Facebook </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Sección de Inputs -->
+            <div id="inputs" class="tab__content">
+                <div class="validation-text__input container">
+                    <h2> Input</h2>
+                    <p>La etiqueta <code>input</code> cuenta con un estilo base.
+                        <br>
+                        La clase <code>secondary</code> permite que el input se presente con bordes del color secundario.
+                        <br>
+                        La clase <code>complementary</code> permite que el input se presente con bordes del color complementary. 
+                    </p>
+                    <br>
+                    <form action="" class="form">
+                        <input type="text " placeholder="Input base o primary">
+                        <input class="inp inp--secondary" type="text" placeholder="Input secondary">
+                        <input class="inp inp--complementary" type="text" placeholder="Input complementary">
+                        <input class="inp inp--error" type="text" placeholder="Input error">
+                        <input class="inp inp--success" type="text" placeholder="Input success">
+                        <input class="inp inp--warning" type="text" placeholder="Input warning">
+                    </form>
+                    <br>
+                    <br>
+                    <div>
+                        <h2> Input disabled</h2>
+                        <p>Inputs deshabilitados con disabled</p>
+                        <form action="" class="form">
+                            <input type="text " disabled placeholder="Input base o primary">
+                            <input class="inp inp--secondary" disabled type="text" placeholder="Input secondary">
+                            <input class="inp inp--complementary" disabled type="text" placeholder="Input complementary">
+                            <input class="inp inp--error" disabled type="text" placeholder="Input error">
+                            <input class="inp inp--success" disabled type="text" placeholder="Input success">
+                            <input class="inp inp--warning" disabled type="text" placeholder="Input warning">
+                        </form>
+                    </div>
+                    <br><br>
+                    <div>
+                        <h2>Textarea</h2>
+                        <form action="" class="form">
+                            <textarea  name="" id="" placeholder="Textarea base o primary"></textarea>
+                            <textarea  class="textarea textarea--secondary" name="" id="" placeholder="Textarea secondary"></textarea>
+                            <textarea class="textarea textarea--complementary" name="" id="" placeholder="Textarea complementary"></textarea>
+                            <textarea  class="textarea textarea--error" name="" id="" placeholder="Textarea Error"></textarea>
+                            <textarea class="textarea textarea--success" name="" id="" placeholder="Textarea Success"></textarea>
+                            <textarea  class="textarea textarea--warning" name="" id="" placeholder="Textarea warning"></textarea>
+                        </form>
+                    </div>
+                    <br><br>
+                    <div>
+                        <h2>Select</h6>
+                        <form action="" class="form">
+                            <select name="" id="">
+                                <option value="">Select base</option>
+                                <option value="">select</option>
+                            </select>
+                            <select class="select select--secondary" name="" id="">
+                                <option value="">Select secundario</option>
+                                <option value="">select</option>
+                            </select>
+                            <select class="select select--complementary" name="" id="">
+                                <option value="">Select complementary</option>
+                                <option value="">select</option>
+                            </select>
+                            <select class="select select--error" name="" id="">
+                                <option value="">Select error</option>
+                                <option value="">select</option>
+                            </select>
+                            <select class="select--success" name="" id="">
+                                <option value="">Select success</option>
+                                <option value="">select</option>
+                            </select>
+                            <select class="select select--warning" name="" id="">
+                                <option value="">Select warning</option>
+                                <option value="">select</option>
+                            </select>
+                            <select disabled name="" id="">
+                                <option value="">Select disabled</option>
+                                <option value="">select</option>
+                            </select>
+                        </form>
+                    </div>
+                    <br><br>
+                    <div>
+                        <h6>Input File</h6>
+                        <p> Este  es el estilo base de la etiqueta input, en el div que envuelve el
+                             input de debe poner la clase <code>inp--file</code></p>
+                        <form action="" class="form">
+                            <div class="form__item inp--file" >
+                                <input type="file">
+                            </div>
+                            <hr>
+                            <p> class="<code>inp--file--secondary</code>"</p>
+                            <div class="form__item inp--file inp--file--secondary" >
+                                <input class="" type="file" >
+                            </div>
+                            <hr>
+                            <p> class="<code>inp--file--complementary</code>"</p>
+                            <div class="form__item inp--file inp--file--complementary"  >
+                                <input type="file" >
+                            </div>
+                            <hr>
+                            <p> Disabled</p>
+                            <div class="form__item inp--file disabled">
+                                <input type="file" disabled>
+                            </div>
+                        </form>
+                    </div>
+                    <br><br>
+                    <div class="mb-base">
+                        <h2> Radio Button</h2>
+                        <div style="padding: 2rem; margin: 1rem 0rem">
+                            <form action="" class="form">
+                                <div class="form__item">
+                                    <input type="radio" name="radioBase" id="radioBase">
+                                    <label for="base">Estilo base</label>
+                                </div>
+                                <div class="form__item">
+                                    <input type="radio" name="radioBaseChecked" id="radioBaseChecked" checked="checked">
+                                    <label for="radioBaseChecked">Estilo base checked</label>
+                                </div>
+                                <div class="form__item">
+                                    <input type="radio" disabled name="radioBaseChecked" id="radioBaseChecked" checked="checked">
+                                    <label for="radioBaseChecked">Estilo base checked</label>
+                                </div>
+                            </form>
+
+                            <hr>
+
+                            <form action="" class="form">
+                                <div class="form__item">
+                                    <input type="radio" class="radio radio--secondary" name="radioSecondary" id="radioSecondary">
+                                    <label for="radioSecondary">Estilo secondary</label>
+                                </div>
+                                <div class="form__item">
+                                    <input type="radio" class="radio radio--secondary" name="radioSecondary" id="radioSecondaryChecked" checked="checked">
+                                    <label for="radioSecondaryChecked">Estilo secondary checked</label>
+                                </div>
+                            </form>
+
+                            <hr>
+
+                            <form action="" class="form">
+                                <div class="form__item">
+                                    <input type="radio" class="radio radio--complementary" name="radioComplementary" id="radioComplementary">
+                                    <label for="radioComplementary">Estilo complementary</label>
+                                </div>
+                                <div class="form__item">
+                                    <input type="radio" class="radio radio--complementary" name="radioComplementary" id="radioComplementaryChecked" checked="checked">
+                                    <label for="radioComplementaryChecked">Estilo complementary checked</label>
+                                </div>
+                            </form>
+
+                            <hr>
+
+                            <form action="" class="form">
+                                <div class="form__item">
+                                    <input type="radio" class="radio radio--error" name="radioError" id="radioError">
+                                    <label for="radioError">Estilo error</label>
+                                </div>
+                                <div class="form__item">
+                                    <input type="radio" class="radio radio--error" name="radioError" id="radioErrorChecked" checked="checked">
+                                    <label for="radioErrorChecked">Estilo error checked</label>
+                                </div>
+                            </form>
+
+                            <hr>
+
+                            <form action="" class="form">
+                                <div class="form__item">
+                                    <input type="radio" class="radio radio--success" name="radioSuccess" id="radioSuccess">
+                                    <label for="radioSuccess">Estilo success</label>
+                                </div>
+                                <div class="form__item">
+                                    <input type="radio" class="radio radio--success" name="radioSuccess" id="radioSuccessChecked" checked="checked">
+                                    <label for="radioSuccessChecked">Estilo success checked</label>
+                                </div>
+                            </form>
+
+                            <hr>
+
+                            <form action="" class="form">
+                                <div class="form__item">
+                                    <input type="radio" class="radio radio--warning" name="radioWarning" id="radioWarning">
+                                    <label for="radioWarning">Estilo warning</label>
+                                </div>
+                                <div class="form__item">
+                                    <input type="radio" class="radio radio--warning" name="radioWarning" id="radioWarningChecked" checked="checked">
+                                    <label for="radioWarningChecked">Estilo warning checked</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="mb-base">
+                    <h2>CheckBox</h2>
+                    <form action="" class="form">
+                        <div class="form__item">
+                            <input type="checkbox" name="checkboxBase" id="checkboxBase">
+                            <label for="checkboxBase">Estilo base</label>
+                        </div>
+                        <div class="form__item">
+                            <input type="checkbox" name="checkboxBaseChecked" id="checkboxBaseChecked" checked="checked">
+                            <label for="checkboxBaseChecked">Estilo base checked</label>
+                        </div>
+                    </form>
+
+                    <hr>
+
+                    <form action="" class="form">
+                        <div class="form__item">
+                            <input type="checkbox" class="checkbox checkbox--secondary" name="checkboxSecondary" id="checkboxSecondary">
+                            <label for="checkboxSecondary">Estilo secondary</label>
+                        </div>
+                        <div class="form__item">
+                            <input type="checkbox" class="checkbox checkbox--secondary" name="checkboxSecondaryChecked" id="checkboxSecondaryChecked" checked="checked">
+                            <label for="checkboxSecondaryChecked">Estilo secondary checked</label>
+                        </div>
+                    </form>
+
+                    <hr>
+
+                    <form action="" class="form">
+                        <div class="form__item">
+                            <input type="checkbox" class="checkbox checkbox--complementary" name="checkboxComplementary" id="checkboxComplementary">
+                            <label for="checkboxComplementary">Estilo complementary</label>
+                        </div>
+                        <div class="form__item">
+                            <input type="checkbox" class="checkbox checkbox--complementary" name="checkboxComplementaryChecked" id="checkboxComplementaryChecked" checked="checked">
+                            <label for="checkboxComplementaryChecked">Estilo complementary checked</label>
+                        </div>
+                    </form>
+
+                    <hr>
+
+                    <form action="" class="form">
+                        <div class="form__item">
+                            <input type="checkbox" class="checkbox checkbox--error" name="checkboxError" id="checkboxError">
+                            <label for="checkboxError">Estilo error</label>
+                        </div>
+                        <div class="form__item">
+                            <input type="checkbox" class="checkbox checkbox--error" name="checkboxErrorChecked" id="checkboxErrorChecked" checked="checked">
+                            <label for="checkboxErrorChecked">Estilo error checked</label>
+                        </div>
+                    </form>
+
+                    <hr>
+
+                    <form action="" class="form">
+                        <div class="form__item">
+                            <input type="checkbox" class="checkbox checkbox--success" name="checkboxSuccess" id="checkboxSuccess">
+                            <label for="checkboxSuccess">Estilo success</label>
+                        </div>
+                        <div class="form__item">
+                            <input type="checkbox" class="checkbox checkbox--success" name="checkboxSuccessChecked" id="checkboxSuccessChecked" checked="checked">
+                            <label for="checkboxSuccessChecked">Estilo success checked</label>
+                        </div>
+                    </form>
+
+                    <hr>
+                    
+                    <form action="" class="form">
+                        <div class="form__item">
+                            <input type="checkbox" class="checkbox checkbox--warning" name="checkboxWarning" id="checkboxWarning">
+                            <label for="checkboxWarnings">Estilo warning</label>
+                        </div>
+                        <div class="form__item">
+                            <input type="checkbox" class="checkbox checkbox--warning" name="checkboxWarningChecked" id="checkboxWarningChecked" checked="checked">
+                            <label for="checkboxWarningChecked">Estilo warning checked</label>
+                        </div>
+                    </form>
+                </div>
+                <br><br>
+                <div class="mb-base">
+                    <h2>Input Type Submit & Type Button</h2>
+                    <input type="button" value="Type Button">
+                    <input class="btn btn--secondary" type="button" value="Type Button secundario"> 
+                    <input class="btnbtn--complementary" type="button" value="Type Button complementario"> 
+
+                    <hr>
+
+                    <input type="submit" value="Type Submit">
+                    <input class="btn btn--secondary" type="submit" value="Type Submit secundario"> 
+                    <input class="btn btn--complementary" type="submit" value="Type Submit complementario"> 
+                </div>     
+            </div>
+            <!-- Sección de tablas -->
+            <div id="tables" class="tab__content">
+                <h2>Diseño de tablas Simple</h2>
+                <p>Se aplicó un estilo base de la etiqueta table, que pinta la cabecera de la tabla
+                 del color primario (base). Si se utiliza la clase <code>table-simple</code>
+                se aplicará un diseño diferente para el responsive. </p>
+                <table summary="Los grupos de música punk más famosos del Reino Unido">
+                <caption>Un resumen de los grupos de música punk más famosos del Reino Unido</caption>
+                <thead>
+                    <tr>
+                    <th scope="col" >Grupo</th>
+                    <th scope="col">Año de formación</th>
+                    <th scope="col">Número de álbumes</th>
+                    <th scope="col" >Canción más conocida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <th scope="row">Buzzcocks</th>
+                    <td  data-th="Año:">1976</td>
+                    <td data-th="Album:">9</td>
+                    <td data-th="Canción conocida:">Ever fallen in love</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">The Clash</th>
+                    <td data-th="Año:">1976</td>
+                    <td data-th="Album:">6</td>
+                    <td data-th="Canción conocida:">London Calling</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">The Stranglers</th>
+                    <td data-th="Año:">1974</td>
+                    <td data-th="Album:">17</td>
+                    <td data-th="Canción conocida:">No More Heroes</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Buzzcocks</th>
+                    <td data-th="Año:">1976</td>
+                    <td data-th="Album:">9</td>
+                    <td data-th="Canción conocida:">Ever fallen in love</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">The Stranglers</th>
+                    <td data-th="Año:">1974</td>
+                    <td data-th="Album:">17</td>
+                    <td data-th="Canción conocida:">No More Heroes</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                    <th scope="row" colspan="2">Número total de álbumes</th>
+                    <td colspan="2">77</td>
+                    </tr>
+                </tfoot>
+                </table>
+                <div class="mt-thumb">
+                    <!--Estructura de una tabla de diseño de color negro , puede modificarse de color -->
+                    <h2>Diseño de Tabla Black</h2>
+                    <p>Para otro diseño de tabla se puede utilizar la clase <code>table-black</code>, esta clase brinda 
+                    un estilo para desktop y otro estilo para responsive.</p>
+                    <table class="table table--black" summary="Los grupos de música punk más famosos del Reino Unido">
+                    <caption>Un resumen de los grupos de música punk más famosos del Reino Unido</caption>
+                    <thead>
+                        <tr>
+                        <th scope="col" >Grupo</th>
+                        <th scope="col">Año de formación</th>
+                        <th scope="col">Número de álbumes</th>
+                        <th scope="col" >Canción más conocida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">Buzzcocks</th>
+                        <td  data-th="Año:">1976</td>
+                        <td data-th="Album:">9</td>
+                        <td data-th="Canción conocida:">Ever fallen in love</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">The Clash</th>
+                        <td data-th="Año:">1976</td>
+                        <td data-th="Album:">6</td>
+                        <td data-th="Canción conocida:">London Calling</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">The Stranglers</th>
+                        <td data-th="Año:">1974</td>
+                        <td data-th="Album:">17</td>
+                        <td data-th="Canción conocida:">No More Heroes</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Buzzcocks</th>
+                        <td data-th="Año:">1976</td>
+                        <td data-th="Album:">9</td>
+                        <td data-th="Canción conocida:">Ever fallen in love</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">The Stranglers</th>
+                        <td data-th="Año:">1974</td>
+                        <td data-th="Album:">17</td>
+                        <td data-th="Canción conocida:">No More Heroes</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                        <th scope="row" colspan="2">Número total de álbumes</th>
+                        <td colspan="2">77</td>
+                        </tr>
+                    </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Sección de titulos y listas -->
+            <div id="headings" class="tab__content">
+            <p>
+                Para los headings se configura desde el mixin la fuente y el color de estos
+                y los tamaños se configuran desde el archivo headings.scss 
+            </p>
+                <div>
+                    <h1>Esto es un H1</h1>
+                    <h2>Esto es un H2</h2>
+                    <h3>Esto es un H3</h3>
+                    <h4>Esto es un H4</h4>
+                    <h5>Esto es un H5</h5>
+                    <h6>Esto es un H6</h6>
+                  </div>  
+                  <br>
+                  <p>
+                    Las listas tienen clases para diferentes tipos de viñetas, en el caso de 
+                    las listas ordenadas y diferente numeracion en el caso de las listas ordenadas.
+                  </p>
+                  <h6>Listas tipo ul o no ordenadas</h6>
+                  <p>Lista con estilos base</p>
+                  <ul>
+                    <li>Probando</li>
+                    <li>Probando</li>
+                    <li>Probando</li>
+                  </ul>
+                  <br>
+                  <p>Lista a la cual le podemos cambiar el color y la forma de la viñeta (Para 
+                     eso usamos el codigo unicode). El codigo a reemplazar es el de la propiedad content.
+                     En este ejempo es: "\2665";</p>
+                  <ul class="bullets">
+                      <li>Lista a la cual le podemos cambiar el color y la forma de la viñeta (Para 
+                        eso usamos el codigo unicode). El codigo a reemplazar es el de la propiedad content.
+                        En este ejempo es: "\2665";</li>
+                      <li>Probando</li>
+                      <li>Probando</li>
+                  </ul>
+                  <br>
+                  <h6>Lista tipo ol u ordenada</h6>
+                  <p>Lista ordenada con numeracion hexadecimal</p>
+                  <ol>
+                    <li>primero</li>
+                    <li>segundo</li>
+                    <li>tercero</li>
+                    <li>cuarto</li>
+                  </ol>
+            </div>
+            <!-- Sección grillas -->
+            <div id="grilla" class="tab__content">
+                <h2>Grilla de imagenes</h2>
+                <p>
+                    Para configurar la grilla de imagenes, en el archivo grid.scss se pueden observar las clases que debemos
+                    agregar a cada elemento de la grilla para que que tome el numero de columnas segun el breakpoint;
+                    Por ejemplo si deseamos que nuestra grilla tenga 3 columnas en el breakpoint lg debemos agregar la clase: grid-12
+                    seguida de la clase del breakpoint y el numero con el cual se completarian las 12 columnas. En este caso, 
+                    que queremos que se vean 3 columnas agregamos la clase grid-lg-4. La idea de usar estos numeros es para 
+                    completar un total de 12 columnas, 3*4 = 12
+                </p>
+                <div class="grid">
+                    <div class="grid-12 grid-lg-4">
+                        <img src="https://i.picsum.photos/id/220/300/300.jpg?hmac=ImzlQmvXraECs9x98iDhbi3WDtXFHRyH6rjFhT2_kiI" width="250" height="250" alt="Calle nocturna">
+                    </div>
+                    <div class="grid-12 grid-lg-4">
+                        <img src="https://i.picsum.photos/id/409/300/300.jpg?hmac=jl6buMPqzMeSEuAieeUISi1bDiaWpI7JQAX0wM7qkf0" width="250" height="250" alt="Bicicleta">
+                    </div>
+                    <div class="grid-12 grid-lg-4">
+                        <img src="https://i.picsum.photos/id/171/300/300.jpg?hmac=hEdWdS7PgEYliDZkkie5BXb5e69BDAf2jnyt4feIiWg" width="250" height="250" alt="Gotas">
+                    </div>
+            
+                    <div class="grid-12 grid-lg-4">
+                        <img src="https://i.picsum.photos/id/896/300/300.jpg?hmac=L1NW2qfuu-zMwP-9p_ZuwTYp3jkv6JuW6uxockJrRSI" width="250" height="250" alt="Atardecer">
+                    </div>
+                    <div class="grid-12 grid-lg-4">
+                        <img src="https://i.picsum.photos/id/993/300/300.jpg?hmac=4GoIWE9T9XBxKLwUxVidze3r0k9sTybobEF2oRvjSLE" width="250" height="250" alt="Montaña">
+                    </div>
+                    <div class="grid-12 grid-lg-4">
+                        <img src="https://i.picsum.photos/id/1049/300/300.jpg?hmac=fl1v8mlNmSUktkvNKdn5gGCLlgVllm0rYfkE3Bx9QfI" width="250" height="250" alt="Roca">
+                    </div>
+                    <div class="grid-12 grid-lg-4">
+                        <img src="https://i.picsum.photos/id/383/300/300.jpg?hmac=kHvlx_u4NdH5T113u1zp_vWeeO9r94Hn6U9IqLfuCXg" width="250" height="250" alt="aviones">
+                    </div>
+                    <div class="grid-12 grid-lg-4">
+                        <img src="https://i.picsum.photos/id/82/300/300.jpg?hmac=VnMN7sxSNePsckkp3Rql5brpsqFiYq3Hb1S-RlIjkd0" width="250" height="250" alt="Flores">
+                    </div>
+                    <div class="grid-12 grid-lg-4">
+                        <img src="https://i.picsum.photos/id/648/300/300.jpg?hmac=xfgy9aIr4ZX0c_J0DNIlGKXLUMxAc201OJU2bj7ejpg" width="250" height="250" alt="Bosque">
+                    </div>
+                </div>
+                <hr>
+                <h2>FlexBox</h2>
+                <!-- Flex Directions -->
+                <div class="mt-base">
+                    <h6>Flex Direction</h6>
+                    <div>
+                        <p>Se asigna la clase <code>d-flex</code> para implementar contenedores flex.</p>
+                        <p>Flex ofrece dos maneras para la presentación del contenido <code>row</code> y <code>column</code>. Por defecto el contenido es mostrado con el estilo <code>row</code> sin embargo esto puede ser modificado.</p>
+                        <p>Para presentar el contenido como columnas se tiene la clase <code>fd-column</code>. De la misma manera <code>fd-column-reverse</code> presentará el contenido en columnas solo que invertirá su orden</p>
+                    </div>
+                    <br>
+                    <div class="container d-flex fd-column ">
+                        <div>
+                            <p style="font-weight: bold;">Primer texto:</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam, ex accusamus nesciunt? Adipisci amet delectus debitis.</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: bold;">Segundo texto:</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam, ex accusamus nesciunt? Adipisci amet delectus debitis.</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="mt-base">
+                    <h6>Flex Direction Responsive</h6>
+                <div>
+                    <p>Las clases de direccion se han configurado en los diferentes breakpoints basicos.</p>
+                    <p>Así se podran implementar dependiendo de las necesidades</p>
+                    <p>Breakpoint sm: <code>fd-sm-row</code>, <code>fd-sm-row-reverse</code>, <code>fd-sm-column</code>, <code>fd-sm-column-reverse</code></p>
+                    <p>Breakpoint md: <code>fd-md-row</code>, <code>fd-md-row-reverse</code>, <code>fd-md-column</code>, <code>fd-md-column-reverse</code></p>
+                    <p>Breakpoint lg: <code>fd-lg-row</code>, <code>fd-lg-row-reverse</code>, <code>fd-lg-column</code>, <code>fd-lg-column-reverse</code></p>
+                    <p>Breakpoint xl: <code>fd-xl-row</code>, <code>fd-xl-row-reverse</code>, <code>fd-xl-column</code>, <code>fd-xl-column-reverse</code></p>
+                    <br>
+                    <p>En este ejemplo ajusta la dirección en el breakpoint lg (960px), además se cambia el orden de presentación</p>
+                </div>
+                <br>
+                <div class="d-flex fd-column fd-lg-row-reverse ">
+                    <div class="container">
+                        <p style="font-weight: bold;">Primer texto:</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam, ex accusamus nesciunt? Adipisci amet delectus debitis.</p>
+                    </div>
+                    <div class="container">
+                        <p style="font-weight: bold;">Segundo texto:</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam, ex accusamus nesciunt? Adipisci amet delectus debitis.</p>
+                    </div>
+                </div>
+                </div>
+                <hr>
+                <!-- Justificación de contenido -->
+                <div class="mt-base">
+                    <h6>Justificación de contenido</h6>
+                    <div>
+                        <p>Define la distribución del contenido en el eje horizontal</p>
+                        <p>Para que estas propiedades se puedan percibir, el contenido deben tener la propiedad de ancho definida</p>
+                        <br>
+                        <p>Ejemplo de la clase <code>jc-center</code></p>
+                    </div>
+                    <br>
+                    <!-- Flex center -->
+                    <div class="d-flex jc-center">
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Primer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Segundo texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Tercer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                    </div>
+                    <br>
+                    <p>Ejemplo de la clase <code>jc-flex-start</code></p>
+                    <!-- Flex start -->
+                    <div class="d-flex jc-flex-start">
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Primer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Segundo texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Tercer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                    </div>
+                    <br>
+                    <p>Ejemplo de la clase <code>jc-flex-end</code></p>
+                    <!-- Flex end -->
+                    <div class="d-flex jc-flex-end">
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Primer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Segundo texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Tercer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                    </div>
+                    <br>
+                    <p>Ejemplo de la clase <code>jc-space-between</code></p>
+                    <!-- Flex space between -->
+                    <div class="d-flex jc-space-between">
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Primer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Segundo texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Tercer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                    </div>
+                    <br>
+                    <p>Ejemplo de la clase <code>jc-space-around</code></p>
+                    <!-- Flex space around -->
+                    <div class="d-flex jc-space-around">
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Primer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Segundo texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem">
+                            <p style="font-weight: bold;">Tercer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                    </div>
+                   
+                </div>
+                <hr>
+                <!-- Alineación vertical de contenido -->
+                <div class="mt-base">
+                    <h6>Alineación Vertical</h6>
+                    <div>
+                        <p>Las siguientes clases ajustan la posición del contenido en el eje vetical, ya sea arriba del contenedor, al final, en el centro o de estilo justificado cubriendo todo el alto del mismo.</p>
+                        <br>
+                        <p>Cada contenedor tiene la altura definida de 50rem, en este primer ejemplo se muestra la clase <code>ai-flex-end</code> </p>
+                    </div>
+                    <div class="d-flex jc-space-between ai-flex-end" style="height: 50rem">
+                        <div style="max-width: 20rem; padding: 1rem; background-color: #FFCA33">
+                            <p style="font-weight: bold;">Primer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem; background-color: #FFCA33">
+                            <p style="font-weight: bold;">Segundo texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem; background-color: #FFCA33">
+                            <p style="font-weight: bold;">Tercer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <p>Alineación vertical central: <code>ai-center</code> </p>
+                    <div class="d-flex jc-space-between ai-center" style="height: 50rem">
+                        <div style="max-width: 20rem; padding: 1rem; background-color: #FFCA33">
+                            <p style="font-weight: bold;">Primer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem; background-color: #FFCA33">
+                            <p style="font-weight: bold;">Segundo texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem; background-color: #FFCA33">
+                            <p style="font-weight: bold;">Tercer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <p>LLena el contenedor verticalmente por completo: <code>ai-stretch</code> </p>
+                    <div class="d-flex jc-space-between ai-stretch" style="height: 50rem">
+                        <div style="max-width: 20rem; padding: 1rem; background-color: #FFCA33">
+                            <p style="font-weight: bold;">Primer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem; background-color: #FFCA33">
+                            <p style="font-weight: bold;">Segundo texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                        <div style="max-width: 20rem; padding: 1rem; background-color: #FFCA33">
+                            <p style="font-weight: bold;">Tercer texto:</p><p>Numquam modi hic excepturi culpa natus dolorem alias labore incidunt similique nisi quisquam architecto totam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main> 
+</body>
+</html>

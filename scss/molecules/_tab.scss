@@ -1,0 +1,23 @@
+// estilos básicos
+.tab {
+    background-color: color(primary, 500);
+    border: 0.1rem solid color(primary, 500);
+    &-container {
+        display: flex;
+        overflow-x: scroll;
+    }
+    ::-webkit-scrollbar {display: none;}
+}
+
+.tab__content {
+    animation: fadeEffect 1s; 
+    border: 0.1rem solid #ccc;
+    border-top: none;
+    display: none;
+    padding: 2rem;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}

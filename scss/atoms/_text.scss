@@ -1,0 +1,15 @@
+p{
+    @include text(map-get($sizes ,tiny),map-get($lineheight ,lh-base));
+    text-align: justify
+}
+@include mq-min(md){
+    p{   
+        @include text(map-get($sizes ,small),map-get($lineheight , lh-half)); 
+    }
+}
+@include mq-min(lg){
+    p{
+        @include text(map-get($sizes ,thumb),map-get($lineheight , lh-medium));
+    }
+}
+    

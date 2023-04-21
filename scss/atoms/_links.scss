@@ -1,0 +1,16 @@
+a{
+    @extend %link;
+}
+.link{
+    &--secondary{
+        @include link (color(secondary,500),color(complementary,300));
+    }
+    &--underline{
+        @include link (color(primary,500),color(complementary,300));
+        text-decoration: underline;
+        &-secondary{
+            @include link (color(secondary,500),color(complementary,300));
+            text-decoration: underline;
+        }
+    }
+}

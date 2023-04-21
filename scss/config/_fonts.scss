@@ -1,17 +1,43 @@
+$font-size         : 1.6rem;
+$font-primary      : 'nunito', sans-serif;
+$font-icon         : 'iconFont'; 
+
 // ==========================================================================
-// Importación de la typografia
+// Importación de tipografia
 // ==========================================================================
+
 @font-face {
-  font-family: 'iconFont';
-  src:  url('../fonts/iconFont/iconFont.eot?8ingfc');
-  src:  url('../fonts/iconFont/iconFont.eot?8ingfc#iefix') format('embedded-opentype'),
-    url('../fonts/iconFont/iconFont.ttf?8ingfc') format('truetype'),
-    url('../fonts/iconFont/iconFont.woff?8ingfc') format('woff'),
-    url('../fonts/iconFont/iconFont.svg?8ingfc#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
+    font-family: 'nunito';
+    src: url('../fonts/nunito/Nunito-Medium.woff2') format('woff2'),
+        url('../fonts/nunito/Nunito-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
 }
 
-// ---------------- family Open sans ---------------
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+@font-face {
+    font-family: 'nunito';
+    src: url('../fonts/nunito/Nunito-Bold.woff2') format('woff2'),
+        url('../fonts/nunito/Nunito-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'nunito';
+    src: url('../fonts/nunito/Nunito-Regular.woff2') format('woff2'),
+        url('../fonts/nunito/Nunito-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'nunito';
+    src: url('../fonts/nunito/Nunito-SemiBold.woff2') format('woff2'),
+        url('../fonts/nunito/Nunito-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}

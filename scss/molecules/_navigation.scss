@@ -1,0 +1,17 @@
+.nav__list {
+    display:flex;
+    font-size: map-get($sizes, "thumb");
+    font-weight: map-get($weights, "semi_bold");    
+    &--column {
+        @include nav(column, start, none);
+        a{
+            margin-bottom: 1rem;
+        }
+    }
+    &--row {
+        @include nav(row, start, none);
+        a{
+            margin-right: 1rem;
+        }
+    }
+}

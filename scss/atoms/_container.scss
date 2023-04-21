@@ -1,0 +1,32 @@
+.container {
+   margin: {
+      left: auto;
+      right: auto;
+   };
+   padding: {
+      left: 1rem;
+      right: 1rem;
+   };
+   width: 100%;
+   &__full {
+      padding: 0;
+      @include mq-min(lg) {
+         padding: {
+            left: 2rem;
+            right: 2rem;
+         };
+      }
+   }
+} 
+
+
+@include mq-min(md) {
+   .container{
+      max-width: map-get($breakpoints, "lg") - 100px ;
+   }
+}
+@include mq-min(lg) {
+   .container{
+      max-width: 1140px;
+   }
+} 

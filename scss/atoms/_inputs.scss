@@ -1,0 +1,196 @@
+input,
+textarea{
+  @extend %input;
+  @include input( transparent, color(grayscale,black),solid, .2rem,color(primary,500),5px);
+}
+textarea{
+  @include textarea(200px, 300px)
+}
+
+.inp,
+.textarea{
+  &--secondary{
+    @include input( transparent, color(grayscale,black),solid, .2rem,color(secondary,500),5px);
+  }
+  &--complementary{
+    @include input( transparent, color(grayscale,black),solid, .2rem,color(complementary,500),5px);
+  }
+  &--error{
+    @include input( transparent, color(grayscale,black),solid, .2rem,color(alert,error),5px);
+  }
+  &--success{
+    @include input( transparent, color(grayscale,black),solid, .2rem,color(alert,success),5px);
+  }
+  &--warning{
+    @include input( transparent, color(grayscale,black),solid, .2rem,color(alert,warning),5px);
+  }
+  &--file{
+    display: inline-block;
+    margin: 0.5rem;
+    position: relative;
+    &::before{
+      align-items: center;
+      background-color: color(primary,500);
+      bottom: 0;
+      border-radius: 3px;
+      box-shadow: 0 2px 2px 0 color(grayscale, gray-4);
+      color: white;
+      content: 'Seleccionar Archivo'; 
+      display: flex;
+      justify-content: center;
+      left: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;   
+    }
+    input[type="file"] {
+      display: inline-block; 
+      opacity: 0;
+    }
+    &--secondary{
+      &::before{
+        background-color:color(secondary,500);
+      }
+    }
+    &--complementary{
+      &:before{
+        background-color:color(complementary,500);
+      }
+    }
+    &.disabled{
+      &:before{
+        box-shadow: none;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+input[type="radio"]{ 
+  appearance: none;
+  background-color:color(grayscale,white);
+  border: solid 1px color(primary,700);
+  border-radius: 50%;
+  box-shadow: none;
+  height: map-get($sizes, small);
+  vertical-align:bottom;
+  width: map-get($sizes, small);
+  &:checked{
+    background-color:color(primary,700); 
+    border: color(grayscale,white) 3px double ;
+    height: map-get($sizes, tiny);
+    width: map-get($sizes, tiny);
+  }
+  &:disabled{
+    opacity: .5;
+  }
+  &.radio{
+    &--secondary{
+      border: solid 1px color(secondary,500);
+      &:checked{
+        background-color:color(secondary,500); 
+        border: color(grayscale,white) 3px double ;
+      }
+    }
+    &--complementary{
+      border: solid 1px color(complementary,500);
+      &:checked{
+        background-color:color(complementary,500); 
+        border: color(grayscale,white) 3px double ;
+      }
+    }
+    &--error{
+        border: solid .2rem color(alert,error); 
+        &:checked{
+            background-color:color(alert,error); 
+            border: color(grayscale,white) 3px double ;
+        }
+    }
+    &--warning{
+        border: solid .2rem color(alert,warning); 
+        &:checked{
+            background-color:color(alert,warning); 
+            border: color(grayscale,white) 3px double ;
+        }
+    }
+    &--success{
+        border: solid .2rem color(alert,success); 
+        &:checked{
+            background-color:color(alert,success); 
+            border: color(grayscale,white) 3px double ;
+        }
+    }
+  }
+}
+
+
+select,
+.select{
+  background: url('../image/chevron.svg') 92% center no-repeat;
+  background-size: .65em auto, 100%;
+  @include appearance(none);
+  @include select(color(grayscale,black),solid, .2rem,color(primary,500), 5px);
+  &--secondary{
+    @include select(color(grayscale,black),solid, .2rem,color(secondary,500), 5px);
+  }
+  &--complementary{
+    @include select(color(grayscale,black),solid, .2rem,color(complementary,500), 5px);
+  }
+  &--error{
+    @include select(color(grayscale,black),solid, .2rem,color(alert,error), 5px);
+  }
+  &--success{
+    @include select(color(grayscale,black),solid, .2rem,color(alert,success), 5px);
+  }
+  &--warning{
+    @include select(color(grayscale,black),solid, .2rem,color(alert,warning), 5px);
+  }
+}
+
+input[type="checkbox"]{
+  background-color: transparent;
+  border: solid 1px color(primary,500);
+  border-radius: 2px;
+  height: map-get($sizes,base);
+  vertical-align:bottom;
+  width: map-get($sizes,base);
+  @include appearance(none);
+  &:checked{
+    background: url('../image/check.svg') color(primary,500) 50% no-repeat;
+    background-size: .9em auto, 100%;
+  }
+  &.checkbox{
+    &--secondary{
+      border: solid 1px color(secondary,500); 
+      &:checked{
+        background-color:color(secondary,500); 
+      }
+    }
+    &--complementary{
+      border: solid 1px color(complementary,500); 
+      &:checked{
+        background-color:color(complementary,500); 
+      }
+    }
+    &--error{
+        border: solid 1px color(alert,error); 
+        &:checked{
+          background-color:color(alert,error); 
+        }
+    }
+    &--warning{
+        border: solid 1px color(alert,warning); 
+        &:checked{
+          background-color:color(alert,warning); 
+        }
+    }
+    &--success{
+        border: solid 1px color(alert,success); 
+        &:checked{
+          background-color:color(alert,success); 
+        }
+    }
+  }
+}
+

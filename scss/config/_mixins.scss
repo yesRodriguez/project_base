@@ -60,31 +60,68 @@
 } 
 
 // ==========================================================================
+// Mixins para la orientación de la barra de navegación: @include nav( ... );
+// ==========================================================================
+@mixin nav($direction, $space, $list-style) {
+  flex-direction: $direction;
+  justify-content: $space;
+  list-style: $list-style;
+}
+
+// ==========================================================================
 // Mixins para la generación de los botones : @include button( ... );
 // ==========================================================================
-@mixin button($bg, $color: #ffffff) {
-  background: $bg;
-  color: $color;
-  position: relative;
-  &:hover {
-    color: $color;
-    transition: background 0.2s ease;
-    text-decoration: none;
+@mixin button($bg, $color: #ffffff, $border-color: transparent, $border-width: 0rem, $border-radius: 0.3rem) {
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  color: $color;  
+  // se trata de un boton ghost u outline
+  @if($bg == transparent or $bg == color(grayscale, white)) {
+    background: $bg;
+
+    &:hover {
+      background: $border-color;
+      color: color(grayscale, white);
+      transition: background 0.2s ease;
+      text-decoration: none;
+    }
+    &:focus {
+      background: darken($border-color, 7%);
+      box-shadow: 0 0 0 0.15rem rgba(color(primary,500), 0.25);
+      color: color(grayscale, white);
+      outline: 0;
+      text-decoration: none;
+    }
+    &:active {
+      background: darken($border-color, 10%);
+    }
+  // Se trata de un botón sólido
+  } @else{
+    background: $bg;
+    &:hover {
+      background: darken($bg, 7%);
+      color: color(grayscale, white);
+      transition: background 0.2s ease;
+      text-decoration: none;
+    }
+    &:focus {
+      background: darken($bg, 7%);
+      outline: 0;
+      text-decoration: none;
+    }
+    &:active {
+      background: darken($bg, 10%);
+    }
   }
-  &:focus {
-    outline: 0;
-    text-decoration: none;
-  }
+
   &.disabled,
   &:disabled {
     opacity: 0.55;
-    color: color(grayscale, 400);
-    background: color(grayscale, white);
-    border: 1px solid color(grayscale, 400);
+    color: $color;
     box-shadow: none;
     cursor: auto;
     &:hover {
-      background: color(grayscale, white);
+      background: $bg;
     }
     &:focus {
       box-shadow: none;
@@ -93,59 +130,103 @@
 }
 
 // ==========================================================================
-// Mixins para la generación de los spaciados ( margins y paddings )
+// Mixins para la generación de los inputs : @include input( ... );
 // ==========================================================================
-@mixin list-spacing($className, $styleName) {
-  @each $name, $space in $sizes {
-    #{$className}-#{$name} {
-      #{$styleName}: $space;
+@mixin input($bg, $color,  $border-style, $border-width,$border,$border-radius) {
+  border: $border-style $border-width $border;
+  border-radius:$border-radius;
+  color: $color;
+  // propiedades para input outline
+  @if $bg == transparent{
+    background: transparent;
+    &:hover {
+      background: $bg;
+    }
+    &:focus {
+      background: darken($bg, 0%);
+      box-shadow: 0 0 0 0.15rem rgba(color(primary,500), 0.25);
+      outline: 0;
+    }
+    &:active {
+      background: darken($bg, 0%);
+    }
+    
+  // propiedades para input con background
+  } @else{
+    background: $bg;
+    &:hover {
+      background: darken($bg, 7%);
+      transition: background 0.2s ease;
+    }
+    &:focus {
+      background: darken($bg, 7%);
+      outline: 0;
+    }
+    &:active {
+      background: darken($bg, 10%);
+    }
+  }
+  &:disabled {
+    color: $color;
+    &:hover {
+      background: $bg;
     }
   }
 }
 
 // ==========================================================================
-// Mixins para la generación de los colores de los textos y backgrounds
+// Mixins para la generación de los select : @include textarea( ... );
 // ==========================================================================
+@mixin textarea($height, $width) {
+  height: $height;
+  width: $width;
+}
 
-@mixin color-modifiers(
-  $attribute: "background",
-  $prefix: "-",
-  $separator: "-"
-) {
-  @each $name, $color in $colors {
-    &#{$prefix}#{$name} {
-      @each $tone, $hex in $color {
-        &#{$separator}#{"" + $tone} {
-          #{$attribute}: $hex;
-        }
-      }
+// ==========================================================================
+// Mixins para la generación de los select : @include button( ... );
+// ==========================================================================
+@mixin select($color, $border-style, $border-width, $border-color, $border-radius) {
+  border: $border-style $border-width $border-color;
+  border-radius: $border-radius;
+  color: $color;
+  cursor:pointer;
+  font-family: $font-primary;
+  margin: 0.5rem;
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
+  // propiedades para input outline
+    &:hover {
+      outline-color:color(primary,500);
     }
+    &:focus {
+      outline-color: rgba(color(primary,500), 0.5);
+    }
+    &:active {
+      outline-color: rgba(color(secondary,300), 0.5);
+    } 
+  &:disabled {
+    opacity: 0.55;
+    color: $color;
+    box-shadow: none;
+    cursor: auto;
   }
 }
 
 // ==========================================================================
-// Mixins BEM selectors (Block, Element, Modifier)
+// Mixins para links @include link() 
 // ==========================================================================
-// Ej.: @include e(title) {}
-@mixin e($element) {
-  &__#{$element} {
-    @content;
+@mixin link ($color, $colorHover){
+  color: $color;
+  &:hover{
+    color: $colorHover;
   }
 }
 
-// Ej.: @include m(primary) {}
-@mixin m($modifier) {
-  &--#{$modifier} {
-    @content;
-  }
-}
-
-@mixin prefix($property, $value, $prefixes: ()){
-  @each $prefix in $prefixes {
-    #{'-' + $prefix + '-' + $property}: $value;
-  }
-  // Output standard non-prefixed declaration
-  #{$property}: $value;
+// ==========================================================================
+// Mixins para el texto @include text(1.2rem,1.6) 
+// ==========================================================================
+@mixin text($tamano, $line-height) {
+  font-size: $tamano;
+  line-height:$line-height;
 }
 
 // ==========================================================================
@@ -159,9 +240,6 @@
   appearance: ($value);
 }
 
-// ==========================================================================
-// Mixins para eliminar apariencia por defecto del navegador
-// ==========================================================================
 // Funcion que define los colores del sistema basado en el mapa de colores establecido en las variables
 @function color($color, $tone) {
   @if map-has-key($colors, $color) {
@@ -194,14 +272,41 @@
   }
 }
 
-// RGB to RGBA
-//example -> background-color: hex-to-rgba($color-3, 0.68);
-@function hex-to-rgba($color: #FFF, $opacity: 0.5) {
-  @return rgba(red($color), green($color), blue($color), $opacity);
-}
-
+// ==========================================================================
+// Mixins para el texto @include linear-gradient() 
+// ==========================================================================
 @mixin linear-gradient($direction, $color-stops...) {
   background: nth(nth($color-stops, 1), 1);
   background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
   background: linear-gradient($direction, $color-stops);
+}
+
+// ==========================================================================
+// Mixins para Titulos : @include titles (color, font-family)
+// ==========================================================================
+
+@mixin titles($font-size,$line-height){
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
+// ==========================================================================
+// Mixins para Grid : @include grid (1rem, display);
+// ==========================================================================
+
+@mixin grid($gap, $display,$grid-colums){
+  display: grid;
+  grid-gap: $gap;
+  grid-template-columns: $grid-colums;
+}
+
+// ==========================================================================
+// Mixins para la generación de los spaciados ( margins y paddings )
+// ==========================================================================
+@mixin list-spacing($className, $styleName) {
+  @each $name, $space in $sizes {
+    #{$className}-#{$name} {
+      #{$styleName}: $space;
+    }
+  }
 }

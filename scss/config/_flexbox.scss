@@ -1,0 +1,115 @@
+// Displays
+$dflexs: flex, inline-flex, block, inline-block, grid, none;
+@each $dflex in $dflexs {
+   .d-#{$dflex} {
+      display: $dflex;
+   }
+}
+
+// Flex Flow Direction : applies to flex containers
+$directions: row, row-reverse, column, column-reverse;
+@each $direction in $directions {
+   .fd-#{$direction} {
+      flex-direction: $direction;
+   }
+}
+
+@include mq-min(sm) {
+   // Display pantalla pequeña
+   $d-sm: flex, block, grid, none, inline-block;
+   @each $d-sm in $d-sm {
+      .d-sm-#{$d-sm} {
+         display: $d-sm;
+      }
+   }
+   // Dirección de flex
+   $directions: row, row-reverse, column, column-reverse;
+   @each $direction in $directions {
+      .fd-sm-#{$direction} {
+         flex-direction: $direction;
+      }
+   }
+}
+
+@include mq-min(md) {
+   // Display pantalla mediana
+   $d-md: flex, block, grid, none, inline-block;
+   @each $d-md in $d-md {
+      .d-md-#{$d-md} {
+         display: $d-md;
+      }
+   }
+   // Dirección de flex
+   $directions: row, row-reverse, column, column-reverse;
+   @each $direction in $directions {
+      .fd-md-#{$direction} {
+         flex-direction: $direction;
+      }
+   }
+}
+
+@include mq-min(lg) {
+   // Display pantalla grande
+   $d-lg: flex, block, grid, none, inline-block;
+   @each $d-lg in $d-lg {
+      .d-lg-#{$d-lg} {
+         display: $d-lg;
+      }
+   }
+   // Dirección de flex
+   $directions: row, row-reverse, column, column-reverse;
+   @each $direction in $directions {
+      .fd-lg-#{$direction} {
+         flex-direction: $direction;
+      }
+   }
+}
+
+@include mq-min(xl) {
+   // Display pantalla extragrande
+   $d-xl: flex, block, grid, none, inline-block;
+   @each $d-xl in $d-xl {
+      .d-xl-#{$d-xl} {
+         display: $d-xl;
+      }
+   }
+   // Dirección de flex
+   $directions: row, row-reverse, column, column-reverse;
+   @each $direction in $directions {
+      .fd-xl-#{$direction} {
+         flex-direction: $direction;
+      }
+   }
+}
+
+// Axis Alignment : applies to flex containers
+$justifys: flex-start, flex-end, center, space-between, space-around, space-evenly;
+@each $justify in $justifys {
+   .jc-#{$justify} {
+      justify-content: $justify;
+   }
+}
+
+// Cross-axis Alignment : applies to flex containers
+$aligns: flex-start, flex-end, center, baseline, stretch;
+@each $align in $aligns {
+   .ai-#{$align} {
+      align-items: $align;
+   }
+}
+
+// Packing Flex Lines : applies to multi-line flex containers
+$aligns: flex-start, flex-end, center, space-between, space-around, stretch;
+@each $align in $aligns {
+   .ac-#{$align} {
+      align-content: $align;
+   }
+}
+
+// Cross-axis Alignment : applies to flex items
+$aligns: flex-start, flex-end, center, baseline, stretch;
+@each $align in $aligns {
+   .as-#{$align} {
+      align-self: $align;
+   }
+}

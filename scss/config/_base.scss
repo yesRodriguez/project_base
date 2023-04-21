@@ -1,0 +1,23 @@
+*, 
+*:before, *:after {
+	box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  font-family: $font-primary;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  font-size: map-get($sizes,base);
+	height: 100%;
+}
+
+code{
+  background: color(grayscale, gray-1);
+  font-size: map-get($sizes,small);
+}
+

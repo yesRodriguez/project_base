@@ -1,0 +1,39 @@
+//https://unicode-table.com/es/
+//
+//El link contiene los codigos unicode para distintos simbolos de viñeta
+
+ul{
+    color:color(secondary,900);
+    font-family: $font-primary;
+    font-size: map-get($sizes,base);
+    list-style: disc;
+    margin-left: 2rem;
+    li{
+        padding-bottom: 1rem;
+    }
+    &.bullets{
+        color: color(complementary, 300);
+        list-style: none;
+        padding: 0;
+        li{
+            padding-left: 22px;
+            position: relative;
+            &:before{
+                content: "\2665";
+                left: 0;
+                position: absolute;
+                top: 0;
+            }
+        }
+    }
+}
+ol{ 
+    color: color(secondary,900);
+    font-family: $font-primary;
+    font-size: map-get($sizes, base);
+    list-style: decimal;
+    margin-left: 2rem;
+    li{
+        padding-bottom: 1rem;
+    }
+}

@@ -1,0 +1,57 @@
+// ==========================================================================
+// Importación de iconos
+// ==========================================================================
+
+@font-face {
+  font-family: 'iconFont';
+  src:  url('../fonts/iconFont/iconFont.eot?uzclj4');
+  src:  url('../fonts/iconFont/iconFont.eot?uzclj4#iefix') format('embedded-opentype'),
+    url('../fonts/iconFont/iconFont.ttf?uzclj4') format('truetype'),
+    url('../fonts/iconFont/iconFont.woff?uzclj4') format('woff'),
+    url('../fonts/iconFont/iconFont.svg?uzclj4#iconFont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'iconFont' !important;
+    speak-as: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.icon-twitter:before {
+  content: "\e901";
+}
+.icon-bars:before {
+  content: "\e900";
+}
+.icon-facebook:before {
+  content: "\e902";
+}
+.icon-instagram:before {
+  content: "\e903";
+}
+.icon-apple:before {
+  content: "\e904";
+}
+.icon-spotify:before {
+  content: "\e905";
+}
+.icon-youtube:before {
+  content: "\e906";
+}
+.icon-chevron-right:before {
+  content: "\e907";
+}
+.icon-search:before {
+  content: "\e908";
+}
