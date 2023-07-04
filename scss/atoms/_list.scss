@@ -3,7 +3,6 @@
 //El link contiene los codigos unicode para distintos simbolos de viñeta
 
 ul{
-    color:color(secondary,900);
     font-family: $font-primary;
     font-size: map-get($sizes,base);
     list-style: disc;
@@ -28,7 +27,6 @@ ul{
     }
 }
 ol{ 
-    color: color(secondary,900);
     font-family: $font-primary;
     font-size: map-get($sizes, base);
     list-style: decimal;

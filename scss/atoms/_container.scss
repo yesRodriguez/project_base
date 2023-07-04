@@ -4,8 +4,8 @@
       right: auto;
    };
    padding: {
-      left: 1rem;
-      right: 1rem;
+      left: 1.6rem;
+      right: 1.6rem;
    };
    width: 100%;
    &__full {
@@ -27,6 +27,6 @@
 }
 @include mq-min(lg) {
    .container{
-      max-width: 1140px;
+      max-width: 1136px;
    }
 } 

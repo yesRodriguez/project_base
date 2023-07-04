@@ -36,6 +36,13 @@
 }
 
 %titles{
-  color: color(primary,500);
-  font-family: $font-primary;
+  font-family: $font-secondary;
+  font-size: map-get($sizes, half);
+  line-height: map-get($lineheight, lh-half);
+}
+
+@media screen and (min-width:767px){
+    %title{
+      font-size: map-get($sizes, huge);
+    }
 }

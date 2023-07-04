@@ -1,15 +1,24 @@
-p{
-    @include text(map-get($sizes ,tiny),map-get($lineheight ,lh-base));
-    text-align: justify
+.title{
+    font-size: map-get($sizes,half);
+    line-height: map-get($lineheight,lh-half);
+    margin-bottom: 1rem;
+    padding-left: 2.4rem;
+    position: relative;
+    &:before{
+        background: color(secondary,500);
+        border-radius: 20px;
+        content: '';
+        display: block;
+        left: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: .6rem;
+    }
 }
 @include mq-min(md){
-    p{   
-        @include text(map-get($sizes ,small),map-get($lineheight , lh-half)); 
+    .title{
+        font-size: map-get($sizes,large);
+        line-height: map-get($lineheight,lh-large);
     }
 }
-@include mq-min(lg){
-    p{
-        @include text(map-get($sizes ,thumb),map-get($lineheight , lh-medium));
-    }
-}
-    

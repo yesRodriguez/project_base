@@ -13,9 +13,12 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   font-size: map-get($sizes,base);
+  line-height: map-get($lineheight,lh-base );
 	height: 100%;
 }
-
+main{
+  position: relative;
+}
 code{
   background: color(grayscale, gray-1);
   font-size: map-get($sizes,small);

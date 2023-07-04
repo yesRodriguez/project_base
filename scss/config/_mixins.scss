@@ -200,9 +200,6 @@
     &:focus {
       outline-color: rgba(color(primary,500), 0.5);
     }
-    &:active {
-      outline-color: rgba(color(secondary,300), 0.5);
-    } 
   &:disabled {
     opacity: 0.55;
     color: $color;
@@ -309,4 +306,16 @@
       #{$styleName}: $space;
     }
   }
+}
+
+//prefix Ex: 
+//@include prefix(object-fit, cover, webkit moz o ms);
+//@include prefix(object-position, center, webkit moz o ms);
+
+@mixin prefix($property, $value, $prefixes: ()){
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
 }
